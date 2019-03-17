@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+
+    <textarea id="test" style="width:800px;height:450px">@ViewBag.Code</textarea>
+    <input type="button" onclick="submit()" value="提交编译" />
+</div>
+<script>
+    function submit() {
+        var code = $("#test").val();
+        $.ajax({
+            url: '/Python/PythonCompiler',
+            type: 'post',
+            data: { code: code },
+            dataType: "json",
+            success: function (data) {
+                alert(JSON.stringify(data));
+            }
+        })
+
+    }
+</script>
