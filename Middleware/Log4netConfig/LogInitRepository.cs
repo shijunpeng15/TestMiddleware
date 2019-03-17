@@ -11,6 +11,7 @@
 using log4net;
 using log4net.Config;
 using log4net.Repository;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Middleware.Provider;
 using System;
@@ -71,7 +72,7 @@ namespace Middleware.Log4netConfig
         /// <param name="ex"></param>
         public static void RequestLog(HttpContext context)
         {
-            string msg = $"【URL】:{context.Request.Scheme}:{context.Request.Host}{context.Request.Path}{context.Request.QueryString}<br>" +
+            string msg = $"【URL】:{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}<br>" +
                          $"【方式】:{context.Request.Method}<br>" +
                          $"【IP】:{context.Connection.RemoteIpAddress}<br>" +
                          $"【协议】:{context.Request.Protocol}";

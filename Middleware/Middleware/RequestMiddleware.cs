@@ -21,11 +21,12 @@ namespace Middleware.Middleware
     {
         private readonly RequestDelegate _next;
         public RequestMiddleware(RequestDelegate next)
-        {
+        { 
             _next = next;
         }
         public async Task Invoke(HttpContext context)
         {
+   
             LogHelper.RequestLog(context);
             await _next.Invoke(context);
         }
